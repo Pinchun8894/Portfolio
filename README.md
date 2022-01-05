@@ -26,3 +26,15 @@ Use `cd SAT_Clique` to get in the directory.
 Use `make` to compile.
 
 Use `./Clique input/<input file> <size of clique>` to run.
+
+The `Clique.cpp` will construct a graph according to the vertices and edges specified in the input file, and transform the graph problem into SAT problem.
+Then it will use miniSAT to figure out whether there exist a clique with the size k in the graph.
+
+### Example
+```
+cd SAT_Clique
+
+make
+
+./Clique input/complete20V.in 8
+```
