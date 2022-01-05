@@ -27,6 +27,7 @@ parser.add_argument("stock1")
 parser.add_argument("stock2")
 parser.add_argument("start")
 parser.add_argument("end")
+parser.add_argument("cost")
 args = parser.parse_args()
 stock1 = args.stock1
 stock2 = args.stock2
@@ -55,7 +56,7 @@ Y_t = (X_t - mu) * math.sqrt(2 * theta) / sigma
 
 df2 = pd.DataFrame(Y_t) 
 df2.to_csv('Y_t.csv')
-c = 0.00471 * math.sqrt(2 * theta) / sigma
+c = float(args.cost) * math.sqrt(2 * theta) / sigma
 
 def summation(const , index):
     middle_term = lambda k: gamma((2 * k + 1) / 2) * ((math.sqrt(2) * const) ** (2 * k + index)) / fac(2 * k + index)
@@ -187,9 +188,9 @@ print("-------------------------------------------")
 print("return for stock1 = " , rate1[len(rate1) - 1] , "%")
 print("return for stock2 = " , rate2[len(rate2) - 1] , "%")
 print("average return = " , averageRate[len(averageRate) - 1].round(2) , "%")
-# print("mdd1 = " , mdd1)
-# print("mdd2 = " , mdd2)
-# print("mddAvg = " , mddAvg)
+print("mdd1 = " , mdd1)
+print("mdd2 = " , mdd2)
+print("mddAvg = " , mddAvg)
 
 plt.plot(X.Date , rate1 , label = stock1)
 plt.plot(X.Date , rate2 , label = stock2)
@@ -198,8 +199,8 @@ plt.axhline(y = 0 , color = 'k', linestyle = '--' , linewidth = 1)
 plt.legend()
 plt.show()
 
-# plt.plot(X.Date , dd1 , label = stock1)
-# plt.plot(X.Date , dd2 , label = stock2)
-# plt.plot(X.Date , ddAvg , label = "strategy")
-# plt.legend()
-# plt.show()
+plt.plot(X.Date , dd1 , label = stock1)
+plt.plot(X.Date , dd2 , label = stock2)
+plt.plot(X.Date , ddAvg , label = "strategy")
+plt.legend()
+plt.show()
