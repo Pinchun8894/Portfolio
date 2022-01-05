@@ -41,7 +41,7 @@ make
 
 The `Clique.cpp` will construct a graph according to the vertices and edges specified in the input file, and transform the graph problem into SAT problem.
 
-Then it will use miniSAT to figure out whether there exist a clique with the size k in the graph.\
+Then it will use miniSAT to figure out whether there exist a clique with the size k in the graph.
 
 <br/>
 
