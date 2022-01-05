@@ -8,6 +8,7 @@ import csv
 import pandas as pd
 from mpmath import *
 import matplotlib.pyplot as plt
+import argparse
 
 def _compute_log_likelihood(params: tuple, *args: tuple) -> float:
     # Setting given parameters
@@ -21,12 +22,15 @@ def _compute_log_likelihood(params: tuple, *args: tuple) -> float:
     log_likelihood = (-np.log(2 * np.pi) / 2) + (-np.log(np.sqrt(sigma_tilde_squared))) + summation_term
     return -log_likelihood
 
-stock1 = "2327.TW"
-stock2 = "2375.TW"
-data = yf.download(stock1 + " " + stock2 , start = "2017-01-01", end = "2021-12-24")["Close"].round(2)
-# stock1 = "KO"
-# stock2 = "PEP"
-# data = yf.download("KO PEP", start="2009-11-30", end="2012-11-29")["Close"].round(2)
+parser = argparse.ArgumentParser()
+parser.add_argument("stock1")
+parser.add_argument("stock2")
+parser.add_argument("start")
+parser.add_argument("end")
+args = parser.parse_args()
+stock1 = args.stock1
+stock2 = args.stock2
+data = yf.download(stock1 + " " + stock2 , start = args.start , end = args.end)["Close"].round(2)
 
 regressor = LinearRegression()
 a = np.array(np.log(data[stock1])).reshape(-1 , 1)
@@ -179,11 +183,10 @@ for i in range(size):
 
 plt.show()
 
-# print(a_hat , b_hat)
 print("-------------------------------------------")
-print("return for stock1 = " , rate1[len(rate1) - 1])
-print("return for stock2 = " , rate2[len(rate2) - 1])
-print("average return = " , averageRate[len(averageRate) - 1])
+print("return for stock1 = " , rate1[len(rate1) - 1] , "%")
+print("return for stock2 = " , rate2[len(rate2) - 1] , "%")
+print("average return = " , averageRate[len(averageRate) - 1].round(2) , "%")
 # print("mdd1 = " , mdd1)
 # print("mdd2 = " , mdd2)
 # print("mddAvg = " , mddAvg)
