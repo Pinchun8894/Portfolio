@@ -15,11 +15,14 @@ python PairTrading.py "2330.TW" "2303.TW" "2017-01-01" "2021-12-31" 0.00471
 
 ### Functionality
 The program would plot three figures, which show the spread, cumulative return rate, and DD curve.
+
 Besides, the time to open and clear position are labelled on the spread figure.
 
 
 ## 2. SAT problem -- Clique Implementation
 ### How to run
 Use `cd SAT_Clique` to get in the directory.
+
 Use `make` to compile.
+
 Use `./Clique input/<input file> <size of clique>` to run.
