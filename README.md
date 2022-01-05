@@ -18,8 +18,7 @@ The program would plot three figures, which show the spread, cumulative return r
 
 Besides, the time to open and clear position are labelled on the spread figure.
 
-
-
+<br/>
 
 ## 2. SAT problem -- Clique Implementation
 ### How to run
@@ -42,9 +41,9 @@ make
 
 The `Clique.cpp` will construct a graph according to the vertices and edges specified in the input file, and transform the graph problem into SAT problem.
 
-Then it will use miniSAT to figure out whether there exist a clique with the size k in the graph.
+Then it will use miniSAT to figure out whether there exist a clique with the size k in the graph.\
 
-
+<br/>
 
 ## 3. Quantum Communication -- Shor's Algorithm
 ### How to run
